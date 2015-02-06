@@ -7,11 +7,10 @@
 
 fileName <- 'household_power_consumption.txt'
 setAs("character","myDate", function(from) as.Date(from, format="%d/%m/%Y") )
-setAs("character","myTime", function(from) strptime(from, format="%T"))
 
 powerData <- read.table(file = fileName, header = TRUE, sep = ';', 
                         na.strings = '?', 
-                        colClasses = c('myDate', 'myTime', 
+                        colClasses = c('myDate', 'character', 
                                        rep.int('numeric', 7)))
 ## Keep only the dates of interest
 powerData <- powerData[powerData$Date >= as.Date('2007-02-01') & 
